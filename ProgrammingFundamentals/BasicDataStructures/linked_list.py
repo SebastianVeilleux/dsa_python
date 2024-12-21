@@ -86,7 +86,7 @@ class LinkedList:
             # Raise an error if the index is out of bounds
             if current is None:
                 raise IndexError("Index out of bounds")
-            
+
         # Create a new node with the provided data
         newNode = Node(data)
         prev.next = newNode  # Link the previous node to the new node
