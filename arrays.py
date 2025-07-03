@@ -18,7 +18,7 @@ arr.extend([7, 8])  # [1, 2, 6, 3, 4, 7, 8]
 arr.remove(6)  # [1, 2, 3, 4, 7, 8]
 
 # -------------------------------
-# ❌ del lista[indice] — O(n)
+# ❌ del lista[indice] — O(n - i)
 del arr[0]  # [2, 3, 4, 7, 8]
 
 # -------------------------------
@@ -45,18 +45,35 @@ arr3 = arr2.copy()  # arr3 = [5, 7, 9]
 
 # -------------------------------
 # 🔁 .reverse() — O(n)
+# Invierte la lista en su lugar (modifica el original)
 arr3.reverse()  # arr3 = [9, 7, 5]
 
 # -------------------------------
-# 🔁 reversed(lista) — O(n) para crear la lista invertida
+# 🔁 reversed(lista) — O(1) para crear el iterador; O(n) al convertir en lista
+# Útil para iterar sin copiar la lista
+for val in reversed(arr3):
+    print(val)  # 5\n7\n9
+
+# Si necesitas una nueva lista invertida:
 reversed_arr = list(reversed(arr3))  # [5, 7, 9]
+
+# -------------------------------
+# 🎯 Slicing invertido [::-1] — O(n) tiempo y espacio
+# Crea una nueva lista invertida (no modifica la original)
+nums = [0, 1, 2, 3, 4, 5, 6]
+reversed_nums = nums[::-1]  # [6, 5, 4, 3, 2, 1, 0]
+
+# También puedes hacer subarrays:
+sub1 = nums[2:5]     # [2, 3, 4]
+sub2 = nums[:3]      # [0, 1, 2]
+sub3 = nums[::2]     # [0, 2, 4, 6]
 
 # -------------------------------
 # 🧮 len(lista) — O(1)
 n = len(arr3)  # 3
 
 # -------------------------------
-# 🧠 'in' / 'not in' — O(n) promedio
+# 🧠 'in' / 'not in' — O(n)
 is_present = 7 in arr3      # True
 is_missing = 10 not in arr3 # True
 
@@ -67,11 +84,12 @@ arr3.sort(reverse=True)  # [9, 7, 5]
 
 # -------------------------------
 # 🔃 sorted(lista) — O(n log n)
+# Devuelve una nueva lista ordenada (no modifica la original)
 sorted_arr = sorted(arr3)                # [5, 7, 9]
 sorted_desc = sorted(arr3, reverse=True) # [9, 7, 5]
 
 # -------------------------------
-# 🔗 Concatenación (a + b) — O(n + k)
+# 🔗 Concatenación (a + b) — O(n + k)
 a = [1, 2]; b = [3, 4]
 c = a + b  # [1, 2, 3, 4]
 
@@ -89,11 +107,3 @@ for i in range(len(arr3)):
 
 for i, val in enumerate(arr3):
     print(i, val)  # 0 9\n1 7\n2 5
-
-# -------------------------------
-# 🎯 Slicing — O(k), k = tamaño del subarray
-nums = [0, 1, 2, 3, 4, 5, 6]
-sub1 = nums[2:5]     # [2, 3, 4]
-sub2 = nums[:3]      # [0, 1, 2]
-sub3 = nums[::2]     # [0, 2, 4, 6]
-reversed_nums = nums[::-1]  # [6, 5, 4, 3, 2, 1, 0]
