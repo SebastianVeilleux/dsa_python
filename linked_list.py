@@ -77,12 +77,6 @@ def delete_value (ll_head, value):
     
     return ll_head
 
-def reverse_ll(head):
-    if not head:
-        return None
-    
-    if head.next
-
 #            -------------- Reverse Linked List LeetCode ----------------
 
 '''
