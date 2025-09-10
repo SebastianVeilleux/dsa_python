@@ -77,7 +77,7 @@ def delete_value (ll_head, value):
     
     return ll_head
 
-#            -------------- Reverse Linked List LeetCode ----------------
+#            ---------------- Reverse Linked List LeetCode ----------------
 
 '''
 
@@ -101,3 +101,14 @@ class Solution:
         return prev
 
 '''
+
+#           ---------------- Middle of Linked List ----------------
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
