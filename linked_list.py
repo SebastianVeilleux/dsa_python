@@ -4,6 +4,8 @@ class Node:
         self.next = next
 
 def build_list(values):
+    if not values:
+        return None
     head = Node(values[0], None)
     prev = head
     for val in values[1:]:
@@ -15,46 +17,93 @@ def build_list(values):
 def ll_to_list(head):
     data = []
     curr = head
-    while curr != None:
+    while curr:
         data.append(curr.data)
         curr = curr.next
+
     return data
 
 def print_ll(head):
     curr = head
-    counter = 0
-    while curr != None:
+    while curr:
         print(curr.data)
-        counter += 1
         curr = curr.next
     
 def insert_head(ll_head, data):
     new_head = Node(data,ll_head)
+
     return new_head
 
 def insert_tail(ll_head, data):
+    if not ll_head:
+        return Node(data)
     curr = ll_head
-    while curr.next != None:
+    while curr.next:
         curr = curr.next
-    
-    curr.next = Node(data) 
+    curr.next = Node(data)
+
+    return ll_head
+
     
 def find(ll_head, value):
     curr = ll_head
-    while curr != None:
+    while curr:
         if(curr.data == value):
-            return curr.data
+            return curr
         else:
             curr = curr.next
         
     return None
 
 def delete_value (ll_head, value):
-    if (ll_head and ll_head.data == value):
+
+    if not ll_head:
+        return None
+    
+    if ll_head.data == value:
         return ll_head.next
+
+    
+    prev = ll_head
+    curr = ll_head.next
+
+    while curr:
+        if(curr.data == value):
+            prev.next = curr.next
+            return ll_head
         
+        prev = curr
+        curr = curr.next
+    
+    return ll_head
 
+def reverse_ll(head):
+    if not head:
+        return None
+    
+    if head.next
 
-linked_list = build_list([1,2,3,4,5])
-delete_value(linked_list, 1)
-print_ll(linked_list)
+#            -------------- Reverse Linked List LeetCode ----------------
+
+'''
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+
+        prev = None
+        cur = head
+
+        while cur:
+            nxt = cur.next
+            cur.next = prev
+            prev = cur
+            cur = nxt
+        
+        return prev
+
+'''
