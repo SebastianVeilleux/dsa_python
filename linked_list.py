@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, data, next):
+    def __init__(self, data, next = None):
         self.data = data
         self.next = next
 
@@ -30,10 +30,31 @@ def print_ll(head):
     
 def insert_head(ll_head, data):
     new_head = Node(data,ll_head)
-    
     return new_head
+
+def insert_tail(ll_head, data):
+    curr = ll_head
+    while curr.next != None:
+        curr = curr.next
     
+    curr.next = Node(data) 
+    
+def find(ll_head, value):
+    curr = ll_head
+    while curr != None:
+        if(curr.data == value):
+            return curr.data
+        else:
+            curr = curr.next
+        
+    return None
+
+def delete_value (ll_head, value):
+    if (ll_head and ll_head.data == value):
+        return ll_head.next
+        
+
 
 linked_list = build_list([1,2,3,4,5])
-linked_list = insert_head(linked_list,0)
+delete_value(linked_list, 1)
 print_ll(linked_list)
